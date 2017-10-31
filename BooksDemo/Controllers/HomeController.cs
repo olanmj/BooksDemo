@@ -12,7 +12,7 @@ namespace BooksDemo.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return Redirect("Books");
         }
 
         public IActionResult About()
