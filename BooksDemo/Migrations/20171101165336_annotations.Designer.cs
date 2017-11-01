@@ -11,9 +11,10 @@ using System;
 namespace BooksDemo.Migrations
 {
     [DbContext(typeof(BooksDBContext))]
-    partial class BooksDBContextModelSnapshot : ModelSnapshot
+    [Migration("20171101165336_annotations")]
+    partial class annotations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,12 +26,10 @@ namespace BooksDemo.Migrations
                     b.Property<int>("AuthorID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("FirstName")
-                        .HasMaxLength(25);
+                    b.Property<string>("FirstName");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(25);
+                        .IsRequired();
 
                     b.HasKey("AuthorID");
 
@@ -44,8 +43,7 @@ namespace BooksDemo.Migrations
 
                     b.Property<int>("AuthorID");
 
-                    b.Property<string>("Category")
-                        .HasMaxLength(25);
+                    b.Property<string>("Category");
 
                     b.Property<int>("PubDate");
 
