@@ -32,7 +32,7 @@ namespace BooksDemo.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Books
+            var book = await _context.Books.Include(b => b.Author)
                 .SingleOrDefaultAsync(m => m.BookID == id);
             if (book == null)
             {
@@ -45,6 +45,7 @@ namespace BooksDemo.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
+            ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "AuthorID", "LastName");
             return View();
         }
 
@@ -77,6 +78,7 @@ namespace BooksDemo.Controllers
             {
                 return NotFound();
             }
+            ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "AuthorID", "LastName");
             return View(book);
         }
 
